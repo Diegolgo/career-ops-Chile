@@ -88,17 +88,38 @@ cp templates/portals.example.yml portals.yml       # Personalizar empresas
 
 # 4. Añadir tu CV
 # Crear cv.md en la raiz del proyecto con tu CV en markdown
+# Este paso se puede realizar con Claude, sea de escritorio o cualquier otra IA, le subes envias o cargas tu cv, y le pides que te lo reescriba en formato markdown (.md) , el resultado será un texto plano, con codigo de formato, este se debe dejar en la raiz del proyecto.
 
 # 5. Personalizar con Claude
-claude   # Abrir Claude Code en este directorio
+claude   # Abrir Claude Code en este directorio (abrir un terminal en la base del proyecto y ejecutar "CLAUDE"
+#Los pre requisitos para utilizar CLAUDE, son
+#1° version pagada de Claude.
+#2° los pasos de instalacion de Claude code (terminal) existen tanto para linux, como el subsistema de linux (wsl) en windows, y mac. en la pagina de claude.
+#3° configurar Claude, con la key del pogramama pagado (al iniciar te da un link, que debes pegar en el navegador, el cual te entregara una KEY para pegar de nuevo en el terminal, (esto se hace solo una vez)
+#4° El uso de este asistente de busqueda, no es automatizado, por lo que debes aceptar lo que Claude te consulta, o ejecutar "Claude" en modo YOLO (you only live once / solo se vive una vez) este modo, le otorga permisos de carpeta y ejecucion sin consultar al usuario, lo que le da libertades, pero en este caso particular, sobre todo ejecutando Claude desde WSL (que es un subsistema virtual) no es tan grave, pero la decision de hacer esto queda para el usuario: se debe ejecutar Claude con alias, ejemplo en el terminal, antes de ejecutar otro codigo, puedes dar un alias a Claude, pero con permisos: clauded="claude --dangerously-skip-permissions"
+# de esta forma, cuando corras "Claude" ejecuta normalmente el agente, y cuando uses "clauded" ejecutra Claude con todos los permisos de carpeta y sin intervencion de usuario, para los comandos que se deben realizar.
 
+# PASOS IMPORTANTES Y QUE NO SE PUEDEN SALTAR"
 # Pidele a Claude que adapte el sistema a ti:
 # "Cambia los arquetipos a roles de backend"
-# "Traduce los modes a ingles"
-# "Añade estas empresas a portals.yml"
-# "Actualiza mi perfil con este CV que te pego"
+# "Añade estas empresas a portals.yml  (escribir paginas web de busqueda, como: trabajando.com ojo que no todas funcionan, las paginas en java tienen problema, y dependiendo de la version pueden o no resultar, ejemplo indeed "
+# "Actualiza mi perfil con CV.md (el cv debe estar actualizado y lo mas extenso que se pueda, tanto en descripcion de trabajo, como en herramientas y habilidades "
+# 6. Usar/ esto se refiere a ejectuar los siguientes comandos, en mas o menos orden (todo esto con Claude:
+#  "actualizar mi perfil" "incluir las siguientes palabras clave en las busquedas..."
+#  "dale prioridad ALTA a XXXX region, MEDIA a XXXX region y BAJA a XXXXX" (en mi caso, tambien puedes dejar todas en alta)
+#  teniendo todo eso listo, puedes comenzar con los siguientes comandos (principales)
+#   SCAN , APPLY, PIPELINE, 
+#  no descartar ni dejar opcional el dashboard, que es una de las herramientas fuertes que tiene este asistente, copiar y pegar lo siguiente en la carpeta raiz (NO NECESITA CLAUDE CORRIENDO)
+por si se acaban los tokens (el plan pro de Claude incluye en torno a 45 interacciones por 5 horas, lo que con este proyecto, y segun la cantidad de ofertas laborales, se pueden consumir rapidamente) por lo que puedes usar
+el dashboard sin el asistente, se navega con TAB y las flechas, para editar condiciones, se usa la teca "c" sobre una oferta. para ver la oferta, su evaluacion y link, te mueves y apretas ENTER
+te saldra la evaluacion, y el link de la oferta, para aplicar manualmente. (en este paso puedes usar claude para responder las preguntas especificas de cada sitio) esto es discrecional.
+```bash
+cd dashboard
+go build -o career-dashboard .
+./career-dashboard --path ..
+```
 
-# 6. Usar
+# Tambien puedes simplemente pegar un link con una oferta, manualmente en Claude, si estas dentro del proyecto, este la tomara en cuanta y la agregara al listado de evaluacion"
 # Pega una URL de oferta o ejecuta /career-ops
 ```
 
